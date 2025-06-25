@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Medication Reminders</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #ff0000, #000000);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+    nav .links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav .links a:hover {
+      color: #ff4d4d;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.3em;
+      margin-bottom: 40px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .btns {
+      display: flex;
+      gap: 20px;
+    }
+    .btns a {
+      background-color: #ff0000;
+      color: #fff;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      transition: background 0.3s;
+    }
+    .btns a:hover {
+      background-color: #cc0000;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MedReminder</div>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/login">Login</a>
+      <a href="/signup">Sign Up</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Welcome to Medication Reminders</h1>
+    <p>
+      A web application that helps you keep track of your medication schedules and share reminders with your family. 
+      Each reminder also features a unique barcode.
+    </p>
+    <div class="btns">
+      <a href="/login">Login</a>
+      <a href="/signup">Sign Up</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 - Medication Reminders
+  </footer>
+</body>
+</html>

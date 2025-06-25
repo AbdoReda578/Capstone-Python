@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Medication Reminders</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #ff0000, #000000);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Navbar */
+    nav {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+    nav .links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav .links a:hover {
+      color: #ff4d4d;
+    }
+    /* Signup box styling */
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .signup-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .signup-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff4d4d;
+    }
+    .signup-box label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .signup-box input[type="text"],
+    .signup-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      background-color: #333;
+      color: #fff;
+    }
+    .signup-box button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff0000;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .signup-box button:hover {
+      background-color: #cc0000;
+    }
+    .signup-box .login-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+    }
+    .signup-box .login-link a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .signup-box .login-link a:hover {
+      color: #ff4d4d;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0,0,0,0.6);
+    }
+    .alert {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .alert-success { background-color: #44cc44; color: white; }
+    .alert-danger { background-color: #ff4444; color: white; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MedReminder</div>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/login">Login</a>
+      <a href="/signup">Sign Up</a>
+    </div>
+  </nav>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="container">
+    <div class="signup-box">
+      <h2>Sign Up</h2>
+  
+            {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      
+
+      <form method="POST" action="/signup">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="example@mail.com" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="********" required>
+
+        <label for="age">Age</label>
+        <input type="text" id="age" name="age" placeholder="Enter your age" required>
+
+        <label for="family_id">Family ID</label>
+        <input type="text" id="family_id" name="family_id" placeholder="Enter family ID" required>
+
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="login-link">
+        Already have an account? <a href="/login">Log In</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 - Medication Reminders
+  </footer>
+</body>
+</html>

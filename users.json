@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "email": "userMember@gmail.com",
+      "password": "scrypt:32768:8:1$OHhIMPAXqEfaF7OD$ed8c5d5b7b44aa502951a0b93d20471b7472c61154096b5445cf92b30b03698a464b1bb0f242517449aa56080052c1ce100cbe9323e54c83bf3918850a8c9646",
+      "age": "30",
+      "family_id": "FAM123"
+    },
+    {
+      "email": "abdoreda2008gtr@gmail.com",
+      "password": "scrypt:32768:8:1$eSm6T9a8qwhtDD4b$544cbcab95674bcca8ac63a06161f0757edc2e00c2a39c0376b54d5cdb6fd1af637497d52d17d0027e8522f423cc897e375fcdd72eee279e95b8f667ee8aa023",
+      "age": "18",
+      "family_id": "FAM123"
+    },
+    {
+      "email": "jihad@gmail.com",
+      "password": "scrypt:32768:8:1$I5G412dM26haLvJy$3ac01bb70f16f996a408db4588ebdf4e8163dce029be822ceef3175a63aa03d26d818c6bfb483f7dbb3c95ad42b8783a1d71c8cb25e3b4b63b7f819153ab93c0",
+      "age": "17",
+      "family_id": "FAM12"
+    }
+  ]
+}

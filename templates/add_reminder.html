@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Reminder - Medication Reminders</title>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #ff0000, #000000);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+    nav .links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav .links a:hover {
+      color: #ff4d4d;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .add-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+      width: 400px;
+    }
+    .add-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff4d4d;
+    }
+    .add-box label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .add-box input[type="text"],
+    .add-box input[type="email"],
+    .add-box input[type="time"],
+    .add-box select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      background-color: #333;
+      color: #fff;
+    }
+    .add-box button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff0000;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .add-box button:hover {
+      background-color: #cc0000;
+    }
+    #reader {
+      width: 100%;
+      margin: 20px auto;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MedReminder</div>
+    <div class="links">
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('add_reminder') }}">Add Reminder</a>
+      <a href="{{ url_for('index') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="add-box">
+      <h2>Add New Reminder</h2>
+
+      <div id="reader"></div>
+
+      <form method="POST" action="{{ url_for('add_reminder') }}">
+        <label for="email">Your Email</label>
+        <input type="email" name="email" id="email" value="{{ email }}" readonly>
+
+        <label for="medName">Medication Name</label>
+        <input type="text" name="medName" id="medName" value="{{ medName }}" required>
+
+        <label for="dose">Dose</label>
+        <input type="text" name="dose" id="dose" value="{{ dose }}" required>
+
+        <label for="time">Time</label>
+        <input type="time" name="time" id="time" value="{{ time_val }}" required>
+
+        <label for="family_member">Family Member</label>
+        <select name="family_member" id="family_member">
+          {% for member in family_members %}
+            <option value="{{ member }}">{{ member }}</option>
+          {% endfor %}
+        </select>
+
+        <button type="submit">Add Reminder</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 - Medication Reminders
+  </footer>
+
+  <script>
+    function onScanSuccess(decodedText, decodedResult) {
+      if (decodedText === "1234567890") {
+        document.getElementById("medName").value = "Paracetamol";
+        document.getElementById("dose").value = "1 pill";
+        document.getElementById("time").value = "08:00";
+      } else if (decodedText === "9876543210") {
+        document.getElementById("medName").value = "Ibuprofen";
+        document.getElementById("dose").value = "2 pills";
+        document.getElementById("time").value = "12:00";
+      } else {
+        alert("Unknown barcode: " + decodedText);
+      }
+
+      html5QrcodeScanner.clear();
+    }
+
+    const html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess);
+  </script>
+</body>
+</html>

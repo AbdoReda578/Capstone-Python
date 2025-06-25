@@ -1,0 +1,26 @@
+{
+  "families": [
+    {
+      "family_id": "FAM123",
+      "members": [
+        {
+          "email": "userMember@gmail.com",
+          "age": 30
+        },
+        {
+          "email": "abdoreda2008gtr@gmail.com",
+          "age": "18"
+        }
+      ]
+    },
+    {
+      "family_id": "FAM12",
+      "members": [
+        {
+          "email": "jihad@gmail.com",
+          "age": "17"
+        }
+      ]
+    }
+  ]
+}
